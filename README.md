@@ -1,1 +1,0 @@
-# jagodana-parivar-frontend
