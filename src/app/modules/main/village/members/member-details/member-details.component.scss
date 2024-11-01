@@ -1,0 +1,127 @@
+.profile-img {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 200px;
+    height: 200px;
+    // object-fit: cover;
+  }
+}
+
+.container {
+    .cards-container {
+        width: 100%;
+        .name-title {
+            font-size: 23px;
+            text-align: center;
+        }
+
+        mat-card-content {
+            margin-top: 20px;
+        }
+    }
+}
+.member-list {
+  mat-card {
+    margin: 0.5rem 0 !important;
+    width: 100%;
+    &:first-child {
+      margin-top: 0 !important;
+    }
+  }
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    li {
+      padding: 0;
+      font-size: 1rem;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      min-width: calc(50% - 0.25rem);
+      &.member-name {
+        width: 100%;
+        label {
+          display: none;
+        }
+        span {
+          font-size: 1.3rem;
+          font-weight: bold;
+          color: #29166f;
+          margin-bottom: 0.2rem;
+        }
+      }
+      label {
+        font-weight: bold;
+        font-size: 1rem;
+        display: inline-block;
+        line-height: normal;
+        width: 100%;
+        &::after, &::before {
+          content: none;
+        }
+      }
+      span {
+        display: inline-block;
+        &.item-lowercase {
+          text-transform: lowercase;
+        }
+      }
+    }
+  }
+}
+.profile-card {
+  display: flex;
+  align-items: start;
+  .profile-img {
+    aspect-ratio: 1 / 1;
+    border-radius: 0.5rem;
+    background: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(10rem, 15vw, 12rem);
+    flex: none;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 1px solid #29166f;
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+    }
+    svg {
+      min-width: 120%;
+      height: 100%;
+    }
+  }
+  mat-card-content {
+    margin: 0 !important;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-card {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    .profile-img {
+      margin-bottom: 0.5rem;
+    }
+    .mat-mdc-card-content {
+      padding: 0;
+    }
+  }
+  .member-name {
+    text-align: center;
+  }
+}

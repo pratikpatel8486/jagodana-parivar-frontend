@@ -1,65 +1,92 @@
 .welcome-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 10px;
-  }
-  
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+  min-height: 100vh;
+  justify-content: space-between !important;
+  gap: 1rem;
+}
+.header-section {
+  width: 100%;
+  flex-direction: column !important;
+  display: flex;
   .header {
     width: 100%;
-    padding: 20px;
+    padding: 1rem 0;
     text-align: left;
-  }
-  
-  .logo {
-    width: 70px;
-    height: 70px;
-    margin-right: 10px;
-  }
-  
-  .welcome-message h3 {
-    font-size: 1.2rem;
-    color: #ff4081;
-    margin: 0;
-  }
-  
-  .banner-card {
-    width: 100%;
-    background-color: #29166f;
-    color: white;
-    margin: 20px 0;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .button-grid {
-    width: 100%;
-    justify-content: space-evenly;
-  }
-  
-  .dashboard-btn {
-    box-sizing: border-box;
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-    .grid-button {
-      margin: 0;
+    margin: 0 !important;
+    flex-wrap: wrap;
+    h3 {
       font-size: 1.2rem;
-      font-weight: 600;
-      border-radius: 0.5rem;
-      flex: 1 1 calc(25% - 1rem) !important;
-      padding: 2.5rem 1rem;
-      width: 100%;
-      max-width: none !important;
+      font-weight: bold;
+      color: #ff4081;
+      margin: 0;
+      text-align: center;
+      line-height: normal;
     }
   }
-  
-  .footer-card {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #A1B5C0 !important;
-    color: #fff !important;
+}
+
+.logo {
+  width: 70px;
+  height: 70px;
+  margin-right: 10px;
+}
+
+.banner-card {
+  width: 100%;
+  background-color: #29166f;
+  color: white;
+  margin: 20px 0;
+  padding: 20px;
+  text-align: center;
+}
+
+.button-grid {
+  width: 100%;
+  justify-content: space-evenly;
+}
+.dashboard-btn {
+  box-sizing: border-box;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  .grid-button {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    flex: 1 1 calc(25% - 1rem) !important;
+    padding: 2.5rem 1rem;
+    width: 100%;
+    max-width: none !important;
   }
+}
+
+.logout-btn {
+  width: auto;
+  border-radius: 0.5rem;
+  padding: 0.7rem;
+  height: auto;
+  display: flex;
+  gap: 0.5rem;
+  font-size: 1rem;
+  align-items: center;
+  color: #29166f;
+  border: 1px solid #29166f;
+  transition: all 0.3s ease;
+  &:is(:hover, :focus) {
+    cursor: pointer;
+    background: #29166f;
+    color: #fff;
+    transition: all 0.3s ease;
+  }
+  svg {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+}
   
   @media (max-width: 600px) {
     .grid-button {

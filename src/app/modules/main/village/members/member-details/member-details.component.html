@@ -1,34 +1,191 @@
-<div class="container" fxLayout="column" fxLayoutAlign="start center">
+<div class="container content-page" fxLayout="column" fxLayoutAlign="start center">
     <!-- Back Button and Title -->
     <div fxLayout="row" fxLayoutAlign="start center" class="header">
       <button mat-icon-button class="back-button">
         <mat-icon>keyboard_arrow_left</mat-icon>
       </button>
-      <h3 fxLayoutAlign="center center">પીપળી ગામ</h3>
+      <h3 fxLayoutAlign="center center">કુટુંબની માહિતી</h3>
     </div>   
   
     <!-- Cards -->  
     <div class="cards-container member-list" fxLayout="row wrap" fxLayoutAlign="start" fxLayoutGap="10px">
-        <mat-card class="item-card" *ngFor="let item of items" fxFlex="48" fxFlex.lt-sm="100">
-            <div *ngIf="item.image" class="profile-img">
-                <img mat-card-image [src]="item.image" *ngIf="item.image" alt="Profile Image" />
+      @if (member) {
+        <mat-card class="item-card" fxFlex.lt-sm="100">
+          <div class="profile-card">
+            <div class="profile-img">
+              <img mat-card-image [src]="member.profile_image" *ngIf="member.profile_image" alt="Profile Image" />
+              <svg *ngIf="!member.profile_image" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="16" height="16" fill="#D9D9D9"/><path d="M8 8C9.65685 8 11 6.65685 11 5C11 3.34315 9.65685 2 8 2C6.34315 2 5 3.34315 5 5C5 6.65685 6.34315 8 8 8Z" fill="#AAAAAA"/><path d="M14 13C14 11.3431 12.6569 10 11 10H5C3.34315 10 2 11.3431 2 13V16H14V13Z" fill="#AAAAAA"/></svg>
             </div>
             <mat-card-content>
-              <h3>{{ item.name }}</h3>
-              <p class="location">
-                <span fxLayoutAlign="start center" class="icon-div"><mat-icon>location_on</mat-icon></span>
-                {{ item.location }}
-              </p>
-              <p class="location">
-                <span fxLayoutAlign="start center" class="icon-div"><mat-icon>work</mat-icon></span>
-                વ્યવસાય નું નામ 
-              </p>
-            </mat-card-content>
+              <!-- <h4 class="name-title">{{ member.name }}</h4> -->
+              <ul>
+                <li class="member-name">
+                  <label matListItemTitle>સભ્યનું નામ</label>
+                  <span matListItemLine>{{ member.name }}</span>
+                </li>
 
-            <!-- <mat-card-actions class="location" fxLayoutAlign="space-between center">
-                    <span class="category">{{ item.age }}</span>
-                    <span fxLayoutAlign="start center" class="icon-div"><mat-icon>bookmark_border</mat-icon></span>
-            </mat-card-actions> -->
+                @if (member.zone) {
+                  <li>
+                    <label matListItemTitle>ઝોન</label>
+                    <span>{{member.zone}}</span>
+                  </li>
+                }
+
+                @if (member.home_town) {
+                  <li>
+                    <label matListItemTitle>મૂળ વતન</label>
+                    <span>{{member.home_town}}</span>
+                  </li>
+                }
+
+                @if (member.phone_no) {
+                  <li>
+                    <label matListItemTitle>ફોન નંબર</label>
+                    <span>{{member.phone_no}}</span>
+                  </li>
+                }
+
+                @if (member.phone_no_2) {
+                  <li>
+                    <label matListItemTitle>ફોન નંબર(2)</label>
+                    <span>{{member.phone_no_2}}</span>
+                  </li>
+                }
+
+                @if (member.email) {
+                  <li>
+                    <label matListItemTitle>ઈમેલ આઈડી</label>
+                    <span class="item-lowercase">{{member.email}}</span>
+                  </li>
+                }
+
+                @if (member.dob) {
+                  <li>
+                    <label matListItemTitle>જન્મ તા.</label>
+                    <span>{{member.dob | date: 'dd-MM-yyyy'}}</span>
+                  </li>
+                }
+
+                @if (member.education) {
+                  <li>
+                    <label matListItemTitle>અભ્યાસ</label>
+                    <span>{{member.education}}</span>
+                  </li>
+                }
+
+                @if (member.current_residence) {
+                  <li>
+                    <label matListItemTitle>હાલનું રહેઠાણ</label>
+                    <span>{{member.current_residence}}</span>
+                  </li>
+                }
+
+                @if (member.blood_group) {
+                  <li>
+                    <label matListItemTitle>બ્લડ ગ્રુપ</label>
+                    <span>{{member.blood_group}}</span>
+                  </li>
+                }
+
+                @if (member.address) {
+                  <li class="w-100">
+                    <label matListItemTitle>સરનામું</label>
+                    <span>{{ member.address }}</span>
+                  </li>
+                }
+              </ul>
+            </mat-card-content>
+          </div>
         </mat-card>
+        @for (item of member.members; track $index) {
+          <mat-card class="item-card other-members" fxFlex.lt-sm="100">
+            <ul>
+              @if (item.name) {
+                <li class="member-name">
+                  <label matListItemTitle>સભ્ય નામ</label>
+                  <span>{{ item.name }}</span>
+                </li>
+              }
+
+              @if (item.zone) {
+                <li>
+                  <label matListItemTitle>ઝોન</label>
+                  <span>{{ item.zone }}</span>
+                </li>
+              }
+
+              @if (item.home_town) {
+                <li>
+                  <label matListItemTitle>મૂળ વતન</label>
+                  <span>{{ item.home_town }}</span>
+                </li>
+              }
+
+              @if (item.relation_with_the_head_of_the_house) {
+                <li>
+                  <label matListItemTitle>મોભી સાથેનો સંબંધ</label>
+                  <span>{{ item.relation_with_the_head_of_the_house }}</span>
+                </li>
+              }
+
+              @if (item.phone_no) {
+                <li>
+                  <label matListItemTitle>ફોન નંબર</label>
+                  <span>{{ item.phone_no}}</span>
+                </li>
+              }
+
+              @if (item.phone_no_2) {
+                <li>
+                  <label matListItemTitle>ફોન નંબર(2)</label>
+                  <span>{{ item.phone_no_2}}</span>
+                </li>
+              }
+
+              @if (item.email) {
+                <li>
+                  <label matListItemTitle>ઈમેલ આઈડી</label>
+                  <span class="item-lowercase">{{ item.email}}</span>
+                </li>
+              }
+
+              @if (item.dob) {
+                <li>
+                  <label matListItemTitle>જન્મ તા.</label>
+                  <span>{{ item.dob | date: 'dd-MM-yyyy'}}</span>
+                </li>
+              }
+
+              @if (item.education) {
+                <li>
+                  <label matListItemTitle>અભ્યાસ</label>
+                  <span>{{ item.education}}</span>
+                </li>
+              }
+
+              @if (item.current_residence) {
+                <li>
+                  <label matListItemTitle>હાલનું રહેઠાણ</label>
+                  <span>{{ item.current_residence}}</span>
+                </li>
+              }
+
+              @if (item.blood_group) {
+                <li>
+                  <label matListItemTitle>બ્લડ ગ્રુપ</label>
+                  <span>{{ item.blood_group}}</span>
+                </li>
+              }
+
+              @if (item.address) {
+                <li class="w-100">
+                  <label matListItemTitle>સરનામું</label>
+                  <span>{{ item.address }}</span>
+                </li>
+              }
+            </ul>
+          </mat-card>
+        }
+      }
     </div>
 </div>

@@ -1,31 +1,34 @@
 <div fxLayout="column" fxLayoutAlign="center center" class="welcome-container">
-    <!-- Header with Logo and Welcome Message -->
+  <!-- Header with Logo and Welcome Message -->
+  <div class="header-section">
     <div fxLayout="row" fxLayoutAlign="center center" class="header">
       <img src="logo.png" alt="Logo" class="logo" />
       <div class="welcome-message">
         <h3>નમસ્તે! જગોદણા પરિવારમાં આપનું સ્વાગત છે.</h3>
       </div>
     </div>
-  
     <!-- Banner for Latest Update -->
     <mat-card class="banner-card" fxFlex="100" fxFlex.gt-sm="80">
       <h3>Banner for latest update</h3>
     </mat-card>
-  
-    <!-- Action Buttons -->
     <div class="w-100 dashboard-btn">
-        <button 
-          *ngFor="let button of buttons" 
-          mat-raised-button [routerLink]="button.route"
-          [ngStyle]="{'background-color': button.color, 'color': 'white'}" 
-          class="grid-button">
-          {{ button.text }}
-        </button>
-      </div>
-      
-    <!-- Footer -->
-     <div fxLayoutAlign="center center" fxFlex="50">
-        <button mat-raised-button class="footer-card">મુખ્ય કાર્યકારની સભા</button>
-     </div>
+      <button 
+        *ngFor="let button of buttons" 
+        mat-raised-button [routerLink]="button.route"
+        [ngStyle]="{'background-color': button.color, 'color': 'white'}" 
+        class="grid-button">
+        {{ button.text }}
+      </button>
+      <!-- <button mat-raised-button class="footer-card">મુખ્ય કાર્યકારની સભા</button> -->
+    </div>
   </div>
+  
+    
+  <!-- Footer -->
+  <button class="logout-btn" (click)="logout()">
+    <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.00195 7C9.01406 4.82497 9.11051 3.64706 9.87889 2.87868C10.7576 2 12.1718 2 15.0002 2L16.0002 2C18.8286 2 20.2429 2 21.1215 2.87868C22.0002 3.75736 22.0002 5.17157 22.0002 8L22.0002 16C22.0002 18.8284 22.0002 20.2426 21.1215 21.1213C20.2429 22 18.8286 22 16.0002 22H15.0002C12.1718 22 10.7576 22 9.87889 21.1213C9.11051 20.3529 9.01406 19.175 9.00195 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M15 12L2 12M2 12L5.5 9M2 12L5.5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg> Logout
+  </button>
+</div>
   
